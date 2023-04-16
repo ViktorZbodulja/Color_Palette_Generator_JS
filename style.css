@@ -38,14 +38,14 @@ path, i, svg {
     position: absolute;
     bottom: 0%;
     background: rgb(255, 255, 255);
-    opacity: 0;
+    /*opacity: 0;*/
     padding: 1rem;
     width: 80%;
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
-    pointer-events: none;
+    /*pointer-events: none;*/
     /*adding adjustment class*/
-    transform: translateY(100px);
+    /*transform: translateY(100px);*/
     transition: all 0.5s ease-in-out;
 }
 .sliders.active {
@@ -100,4 +100,14 @@ path, i, svg {
     background: none;
     cursor: pointer;
     margin: 2rem 0rem;
+}
+/* Slider */
+input[type="range"] {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 1rem 0rem;
+    width: 100%;
+    position: relative;
+    border-radius: 1rem;
+    cursor: pointer;
 }
