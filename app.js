@@ -5,18 +5,26 @@ const sliders = document.querySelectorAll("input[type='range']");
 const currentHexes = document.querySelectorAll(".color h2");
 let initialColors;
 
-//Functions
+//event listeners
+sliders.forEach((slider) => {
+  slider.addEventListener("input", hslControls);
+});
+colorDivs.forEach((div, index) => {
+  div.addEventListener("input", () => {
+    updateTextUI(index);
+  });
+});
 
-//Color generator
-function generateHex() {
-  const hexColor = chroma.random();
-  return hexColor;
-}
+//functions
+//color generator
 function randomColors() {
+  initialColors = [];
+
   colorDivs.forEach((div, index) => {
     const hexText = div.children[0];
-    const randomColor = generateHex();
-
+    const randomColor = chroma.random();
+    //add it to the array
+    initialColors.push(chroma(randomColor).hex());
     //Add color to the background
     div.style.backgroundColor = randomColor;
     hexText.innerText = randomColor;
@@ -31,6 +39,8 @@ function randomColors() {
 
     colorizeSliders(color, hue, brightness, saturation);
   });
+  //reset inputs
+  resetInputs();
 }
 
 function checkTextContrast(color, text) {
@@ -59,6 +69,58 @@ function colorizeSliders(color, hue, brightness, saturation) {
     0
   )}, ${scaleBrightness(0.5)}, ${scaleBrightness(1)})`;
   hue.style.backgroundImage = `linear-gradient(to right, rgb(255, 0, 0), rgb(255,255 ,0),rgb(0, 255, 0),rgb(0, 255, 255),rgb(0,0,255),rgb(255,0,255),rgb(255,0,0))`;
+}
+function hslControls(e) {
+  const index =
+    e.target.getAttribute("data-bright") ||
+    e.target.getAttribute("data-sat") ||
+    e.target.getAttribute("data-hue");
+
+  let sliders = e.target.parentElement.querySelectorAll("input[type='range']");
+  const hue = sliders[0];
+  const brightness = sliders[1];
+  const saturation = sliders[2];
+
+  const bgColor = initialColors[index];
+
+  let color = chroma(bgColor)
+    .set("hsl.s", saturation.value)
+    .set("hsl.l", brightness.value)
+    .set("hsl.h", hue.value);
+
+  colorDivs[index].style.backgroundColor = color;
+}
+function updateTextUI(index) {
+  const activeDiv = colorDivs[index];
+  const color = chroma(activeDiv.style.backgroundColor);
+  const textHex = activeDiv.querySelector("h2");
+  const icons = activeDiv.querySelectorAll(".controls button");
+  textHex.innerText = color.hex(); //convert to hex
+  //check contrast
+  checkTextContrast(color, textHex);
+  for (icon of icons) {
+    checkTextContrast(color, icon);
+  }
+}
+function resetInputs() {
+  const sliders = document.querySelectorAll(".sliders input");
+  sliders.forEach((slider) => {
+    if (slider.name === "hue") {
+      const hueColor = initialColors[slider.getAttribute("data-hue")];
+      const hueValue = chroma(hueColor).hsl()[0];
+      slider.value = Math.floor(hueValue);
+    }
+    if (slider.name === "brightness") {
+      const brightColor = initialColors[slider.getAttribute("data-bright")];
+      const brightValue = chroma(brightColor).hsl()[2].toFixed(2);
+      slider.value = brightValue;
+    }
+    if (slider.name === "saturation") {
+      const satColor = initialColors[slider.getAttribute("data-sat")];
+      const satValue = chroma(satColor).hsl()[1].toFixed(2);
+      slider.value = satValue;
+    }
+  });
 }
 
 randomColors();
