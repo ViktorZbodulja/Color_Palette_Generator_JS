@@ -53,7 +53,7 @@ path, i, svg {
     transform: translate(0px);
     pointer-events: all;
 }
-.sliders button {
+.sliders button, .close_save, .close_library {
     position: absolute;
     top: 0;
     right: 0;
@@ -111,7 +111,7 @@ input[type="range"] {
     border-radius: 1rem;
     cursor: pointer;
 }
-.copy_container {
+.copy_container, .save_container, .library_container {
     position: fixed;
     top: 0%;
     left: 0%;
@@ -125,7 +125,7 @@ input[type="range"] {
     transition: all 0.75s ease-in-out;
     pointer-events: none;
 }
-.copy_popup {
+.copy_popup, .save_popup, .library_popup {
     background: white;
     display: flex;
     flex-direction: column;
@@ -136,15 +136,68 @@ input[type="range"] {
     transform: translateY(2rem);
     min-width: 30%;
     min-height: 30vh;
+    overflow: hidden;
 }
-.copy_popup h4 {
+.copy_popup h4, .save_popup h4, .library_popup h4 {
     font-size: 2rem;
-    padding: 2rem;
+    padding: 2.8rem;
 }
-.copy_container.active {
+.copy_container.active, .save_container.active, .library_container.active {
     opacity: 1;
     pointer-events: all;
 }
-.copy_popup.active {
+.copy_popup.active, .save_popup.active, .library_popup.active {
     transform: translateY(0rem);
+}
+.save_name {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+.close_save, .close_library {
+    border-radius: 0rem 0rem 0rem 2rem;
+    padding: 0.9rem;
+}
+.submit_save {
+    margin: 2rem;
+    padding: 1rem 3rem;
+    background: rgb(60, 60, 92);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+.library_popup {
+    min-width: 40%;
+    padding: 1rem;
+    justify-content: flex-start;
+    overflow-y: scroll;
+    max-height: 50vh;
+   
+}
+.custom_palette {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 2rem;
+}
+.small_preview {
+    display: flex;
+    flex: 1;
+}
+.custom_palette h4 {
+    flex: 1;
+}
+.small_preview div {
+    height: 5rem;
+    flex: 1;
+}
+.pick_palette_btn {
+    height: 5rem;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    background: rgb(68, 68, 68);
+    color: white;
 }
