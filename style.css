@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body {
-    font-family: 'Mulish', sans-serif;
+    font-family: 'Lato', sans-serif;
     color: rgb(51, 51, 51);
 }
 button {
@@ -16,7 +16,7 @@ path, i, svg {
 .colors {
     min-height: 80vh;
     display: flex;
-    color: rgb(212, 212, 212);
+    color: rgb(117, 117, 117);
 }
 .color {
     height: 80vh;
@@ -29,7 +29,7 @@ path, i, svg {
     overflow: hidden;
 }
 .color h2 {
-    font-size: 2rem;
+    font-size: 1.3rem;
     cursor: pointer;
 }
 .sliders {
@@ -47,6 +47,7 @@ path, i, svg {
     /*adding adjustment class*/
     transform: translateY(100px);
     transition: all 0.5s ease-in-out;
+    overflow: hidden;
 }
 .sliders.active {
     opacity: 1;
@@ -58,7 +59,6 @@ path, i, svg {
     top: 0;
     right: 0;
     padding: 0.5rem;
-    border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
     border: none;
     background: rgb(73, 73, 73);
@@ -79,7 +79,7 @@ path, i, svg {
 .panel button {
     font-size: 1.2rem;
     margin: 1rem;
-    padding: 1rem 2rem;
+    padding: 0.8rem 1.6rem;
     background: rgb(31, 33, 63);
     border: none;
     color: white;
@@ -95,7 +95,7 @@ path, i, svg {
     align-items: center;
 }
 .adjust, .lock {
-    font-size: 2rem;
+    font-size: 1.4rem;
     border: none;
     background: none;
     cursor: pointer;
@@ -131,7 +131,7 @@ input[type="range"] {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    border-radius: 2rem;
+    border-radius: 1.5rem;
     transition: transform 0.75s ease;
     transform: translateY(2rem);
     min-width: 30%;
@@ -139,8 +139,8 @@ input[type="range"] {
     overflow: hidden;
 }
 .copy_popup h4, .save_popup h4, .library_popup h4 {
-    font-size: 2rem;
-    padding: 2.8rem;
+    font-size: 1.4rem;
+    padding: 2.2rem;
 }
 .copy_container.active, .save_container.active, .library_container.active {
     opacity: 1;
@@ -150,16 +150,16 @@ input[type="range"] {
     transform: translateY(0rem);
 }
 .save_name {
-    font-size: 1.5rem;
-    padding: 1rem;
+    font-size: 1.2rem;
+    padding: 0.5rem;
 }
 .close_save, .close_library {
-    border-radius: 0rem 0rem 0rem 2rem;
+    border-radius: 0rem 0rem 0rem 1.5rem;
     padding: 0.9rem;
 }
 .submit_save {
     margin: 2rem;
-    padding: 1rem 3rem;
+    padding: 0.8rem 2.6rem;
     background: rgb(60, 60, 92);
     border: none;
     border-radius: 10px;
@@ -168,36 +168,56 @@ input[type="range"] {
 }
 .library_popup {
     min-width: 40%;
-    padding: 1rem;
+    padding: 0rem 1rem;
     justify-content: flex-start;
     overflow-y: scroll;
-    max-height: 50vh;
-   
+    max-height: 50vh; 
 }
 .custom_palette {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
-    padding: 2rem;
+    padding: 0rem;
+   
 }
 .small_preview {
     display: flex;
     flex: 1;
 }
 .custom_palette h4 {
+    font-size: 1.2rem;
     flex: 1;
 }
 .small_preview div {
-    height: 5rem;
+    height: 3rem;
     flex: 1;
 }
-.pick_palette_btn {
-    height: 5rem;
+.pick_palette_btn, .delete_palette {
+    height: 3rem;
     border: none;
     padding: 1rem;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1rem;
     background: rgb(68, 68, 68);
     color: white;
 }
+.delete_palette {
+    color: rgb(68, 68, 68);
+    background: white
+}
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 5rem;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+ 
+ 

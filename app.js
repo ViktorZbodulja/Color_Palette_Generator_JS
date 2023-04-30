@@ -224,14 +224,7 @@ function savePalette(e) {
     colors.push(hex.innerText);
   });
   //generate object
-  let paletteNr;
-  const paletteObjects = JSON.parse(localStorage.getItem("palettes"));
-  if (paletteObjects) {
-    paletteNr = paletteObjects.length;
-  } else {
-    paletteNr = savedPalettes.length;
-  }
-
+  let paletteNr = savedPalettes.length;
   const paletteObj = { name: name, colors, nr: paletteNr };
   savedPalettes.push(paletteObj);
   //save to local storage
@@ -254,6 +247,11 @@ function savePalette(e) {
   paletteBtn.classList.add(paletteObj.nr);
   paletteBtn.innerText = "Select";
 
+  const paletteDeleteBtn = document.createElement("button");
+  paletteDeleteBtn.classList.add("delete_palette");
+  paletteDeleteBtn.classList.add(paletteObj.nr);
+  paletteDeleteBtn.innerHTML = "<i class='fas fa-trash'></i>";
+
   //attach event to the button
   paletteBtn.addEventListener("click", (e) => {
     closeLibrary();
@@ -268,13 +266,30 @@ function savePalette(e) {
     });
     resetInputs();
   });
+  paletteDeleteBtn.addEventListener("click", (e) => {
+    const index = e.target.classList[1];
+    deletePalette(e, index);
+  });
+
+  function deletePalette(e, index) {
+    const paletteObjects = JSON.parse(localStorage.getItem("palettes"));
+    let i = 0;
+    paletteObjects.forEach((palette) => {
+      if (palette.name === e.target.parentElement.children[0].innerText) {
+        paletteObjects.splice(i, 1);
+      }
+    });
+    updatedPalettes = JSON.stringify(paletteObjects);
+    localStorage.setItem("palettes", updatedPalettes);
+    e.target.parentElement.remove();
+  }
 
   //append to library
   palette.appendChild(title);
   palette.appendChild(preview);
   palette.appendChild(paletteBtn);
+  palette.appendChild(paletteDeleteBtn);
   libraryContainer.children[0].appendChild(palette);
-  console.log(libraryContainer);
 }
 function savetoLocal(paletteObj) {
   let localPalettes;
@@ -298,10 +313,9 @@ function closeLibrary() {
 }
 function getLocal() {
   if (localStorage.getItem("palettes") === null) {
-    localPalettes = [];
+    localStorage = [];
   } else {
     const paletteObjects = JSON.parse(localStorage.getItem("palettes"));
-    savedPalettes = [...paletteObjects];
     //regenerate all palettes
     paletteObjects.forEach((paletteObj) => {
       //gerate the palette for library
@@ -320,6 +334,10 @@ function getLocal() {
       paletteBtn.classList.add("pick_palette_btn");
       paletteBtn.classList.add(paletteObj.nr);
       paletteBtn.innerText = "Select";
+      const paletteDeleteBtn = document.createElement("button");
+      paletteDeleteBtn.classList.add("delete_palette");
+      paletteDeleteBtn.classList.add(paletteObj.nr);
+      paletteDeleteBtn.innerHTML = "<i class='fas fa-trash'></i>";
 
       //attach event to the button
       paletteBtn.addEventListener("click", (e) => {
@@ -336,11 +354,30 @@ function getLocal() {
         resetInputs();
       });
 
+      paletteDeleteBtn.addEventListener("click", (e) => {
+        const index = e.target.classList[1];
+        deletePalette(e, index);
+      });
+      function deletePalette(e, index) {
+        const paletteObjects = JSON.parse(localStorage.getItem("palettes"));
+        let i = 0;
+        paletteObjects.forEach((palette) => {
+          if (palette.name === e.target.parentElement.children[0].innerText) {
+            paletteObjects.splice(i, 1);
+          }
+        });
+        updatedPalettes = JSON.stringify(paletteObjects);
+        localStorage.setItem("palettes", updatedPalettes);
+        e.target.parentElement.remove();
+      }
+
       //append to library
       palette.appendChild(title);
       palette.appendChild(preview);
       palette.appendChild(paletteBtn);
+      palette.appendChild(paletteDeleteBtn);
       libraryContainer.children[0].appendChild(palette);
+      console.log(libraryContainer);
     });
   }
 }
