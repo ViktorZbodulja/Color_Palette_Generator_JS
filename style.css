@@ -74,7 +74,8 @@ path, i, svg {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    height: 20vh;
+    height: 18vh;
+    margin: 1rem 0rem;
 }
 .panel button {
     font-size: 1.2rem;
@@ -173,6 +174,7 @@ input[type="range"] {
     overflow-y: scroll;
     max-height: 50vh; 
 }
+
 .custom_palette {
     display: flex;
     align-items: center;
@@ -210,11 +212,11 @@ input[type="range"] {
     width: 5px;
   }
   ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-    border-radius: 5rem;
+    opacity: 0; 
   }
   ::-webkit-scrollbar-thumb {
-    background: #888; 
+    background: rgba(136, 136, 136, 0.5); 
+    height: 100px;
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
@@ -257,6 +259,7 @@ input[type="range"] {
         max-height: 27vh;
         padding-top: 2rem;
         justify-content: center;
+        border: 1px solid white;
     }
     .color svg {
         margin: 1rem;

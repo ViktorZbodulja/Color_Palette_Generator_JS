@@ -272,9 +272,9 @@ function savePalette(e) {
     deletePalette(e, index);
   });
 
-  function deletePalette(e, index) {
+  function deletePalette(e) {
     const paletteObjects = JSON.parse(localStorage.getItem("palettes"));
-    paletteObjects.forEach((palette) => {
+    paletteObjects.forEach((palette, index) => {
       if (palette.name === e.target.parentElement.children[0].innerText) {
         paletteObjects.splice(index, 1);
       }
@@ -358,12 +358,12 @@ function getLocal() {
         const index = e.target.classList[1];
         deletePalette(e, index);
       });
-      function deletePalette(e, index) {
+
+      function deletePalette(e) {
         const paletteObjects = JSON.parse(localStorage.getItem("palettes"));
-        let i = 0;
-        paletteObjects.forEach((palette) => {
+        paletteObjects.forEach((palette, index) => {
           if (palette.name === e.target.parentElement.children[0].innerText) {
-            paletteObjects.splice(i, 1);
+            paletteObjects.splice(index, 1);
           }
         });
         updatedPalettes = JSON.stringify(paletteObjects);
