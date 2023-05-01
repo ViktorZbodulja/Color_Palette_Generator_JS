@@ -14,6 +14,7 @@ let savedPalettes = [];
 
 //event listeners
 generateBtn.addEventListener("click", randomColors);
+
 sliders.forEach((slider) => {
   slider.addEventListener("input", hslControls);
 });
@@ -273,10 +274,9 @@ function savePalette(e) {
 
   function deletePalette(e, index) {
     const paletteObjects = JSON.parse(localStorage.getItem("palettes"));
-    let i = 0;
     paletteObjects.forEach((palette) => {
       if (palette.name === e.target.parentElement.children[0].innerText) {
-        paletteObjects.splice(i, 1);
+        paletteObjects.splice(index, 1);
       }
     });
     updatedPalettes = JSON.stringify(paletteObjects);
@@ -377,7 +377,6 @@ function getLocal() {
       palette.appendChild(paletteBtn);
       palette.appendChild(paletteDeleteBtn);
       libraryContainer.children[0].appendChild(palette);
-      console.log(libraryContainer);
     });
   }
 }

@@ -219,5 +219,69 @@ input[type="range"] {
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
   }
+
+@media (max-width: 1610px) {
+    .custom_palette h4{
+       padding: 2.2rem 1rem;
+    }
+   
+}
+@media (max-width: 1200px) {
+    .sliders {
+        width: 95%;
+    }   
+}
+@media (max-width: 980px) {
+    .library_popup {
+       min-width: 60%;
+    }
+    .sliders {
+        padding: 1rem 0.5rem;
+    } 
+    .copy_popup {
+        min-width: 50%;
+    }
+}
+@media (max-width: 690px) {
+    .library_popup {
+       min-width: 80%;
+    } 
+}
+@media (max-width: 665px) {
+    .colors {
+       flex-wrap: wrap;
+       flex-direction: row;
+    } 
+    .color {
+        flex-basis: 50%;
+        max-height: 27vh;
+        padding-top: 2rem;
+        justify-content: center;
+    }
+    .color svg {
+        margin: 1rem;
+    }
+    .color h2 {
+        margin-bottom: 2rem;
+    }
+    .controls {
+        flex-direction: row;
+    }
+    .sliders {
+        width: 85%;
+     } 
+     .sliders input {
+        margin: 0.8rem 0rem;
+     }
+}
+@media (max-width: 435px) {
+    .sliders {
+        width: 85%;
+     } 
+     .copy_popup {
+        min-width: 70%;
+    }   
+}
+
  
  
