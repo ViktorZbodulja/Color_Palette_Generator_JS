@@ -210,6 +210,7 @@ function openPalette(e) {
   const popup = saveContainer.children[0];
   saveContainer.classList.add("active");
   popup.classList.add("active");
+  document.querySelector(".save_name").select();
 }
 function closePalette(e) {
   const popup = saveContainer.children[0];

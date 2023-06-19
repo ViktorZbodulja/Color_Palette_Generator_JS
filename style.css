@@ -6,6 +6,7 @@
 body {
     font-family: 'Lato', sans-serif;
     color: rgb(51, 51, 51);
+    margin: 3rem 3rem 0rem 3rem;
 }
 button {
     font-family: 'Mulish', sans-serif;
@@ -13,13 +14,25 @@ button {
 path, i, svg {
     pointer-events: none;
 }
+.app_header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: #393838;
+}
+.app_header  img {
+    max-width: 2.5rem;
+    margin-right: 0.8rem;
+}
 .colors {
-    min-height: 80vh;
+    min-height: 70vh;
     display: flex;
     color: rgb(117, 117, 117);
 }
 .color {
-    height: 80vh;
+    height: 70vh;
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -74,7 +87,7 @@ path, i, svg {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    height: 18vh;
+    height: 16vh;
     margin: 1rem 0rem;
 }
 .panel button {
@@ -244,12 +257,11 @@ input[type="range"] {
         min-width: 50%;
     }
 }
-@media (max-width: 690px) {
-    .library_popup {
-       min-width: 80%;
-    } 
-}
-@media (max-width: 665px) {
+
+@media (max-width: 850px) {
+    body {
+        margin-top: 2rem;
+    }
     .colors {
        flex-wrap: wrap;
        flex-direction: row;
@@ -277,6 +289,17 @@ input[type="range"] {
         margin: 0.8rem 0rem;
      }
 }
+@media (max-width: 600px) {
+    body {
+        margin: 2rem 1rem 0rem 1rem;
+    }
+}
+@media (max-width: 520px) {
+    
+    .app_header {
+        font-size: 1.5rem;
+    }
+}
 @media (max-width: 435px) {
     .sliders {
         width: 85%;
@@ -284,6 +307,23 @@ input[type="range"] {
      .copy_popup {
         min-width: 70%;
     }   
+}
+@media (max-width: 400px) {
+    body {
+        margin: 1.5rem 0.5rem 0rem 0.5rem;
+    }
+}
+@media (max-width: 345px) {
+    body {
+        margin: 1.5rem 0rem 0rem 0rem;
+    }
+    .app_header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .app_header img {
+        max-width: 3.2rem ;
+    }
 }
 
  

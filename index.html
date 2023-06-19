@@ -9,9 +9,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
     href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
     <title>Color Palette Generator</title>
+    <link rel="icon" type="image/x-icon" href="./logo/color_svg.svg">
 </head>
 <body>
+    <h1 class="app_header">
+        <img src="./logo/color_svg.svg" />Color.Palette.Generator
+    </h1>
     <div class="colors">
         <div class="color">
             <h2>Hex</h2>
@@ -118,7 +125,7 @@
         <div class="save_popup">
             <button class="close_save">X</button>
             <h4>Give a name to your pallete</h4>
-            <input type="text" maxlength="14" class="save_name" />
+            <input type="text" maxlength="14" class="save_name"/>
             <button type="submit" class="submit_save">Save</button>
         </div>
     </div>
@@ -130,6 +137,6 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js" integrity="sha512-zInFF17qBFVvvvFpIfeBzo7Tj7+rQxLeTJDmbxjBz5/zIr89YVbTNelNhdTT+/DCrxoVzBeUPVFJsczKbB7sew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="./app.js"></script>
+    <script type="module" src="./app.js"></script>
 </body>
 </html>
