@@ -11,6 +11,7 @@ const slidersContainers = document.querySelectorAll(".sliders");
 let initialColors;
 //for local storage
 let savedPalettes = [];
+let updatedPalettes;
 
 //event listeners
 generateBtn.addEventListener("click", randomColors);
