@@ -59,19 +59,15 @@ function randomColors() {
     const hexText = div.children[0];
     const randomColor = chroma.random();
 
-    //add it to the array
-    if (div.classList.contains("locked")) {
-      initialColors.push(hexText.innerText);
-      return;
-    } else {
-      initialColors.push(chroma(randomColor).hex());
-    }
-    //Add color to the background
+    // Store the initial color
+    initialColors.push(randomColor.hex());
+
+    // Add color to the background
     div.style.backgroundColor = randomColor;
     hexText.innerText = randomColor;
-    //check for contrast
+    // check for contrast
     checkTextContrast(randomColor, hexText);
-    //Initial Colorize Sliders
+    // Initial Colorize Sliders
     const color = chroma(randomColor);
     const sliders = div.querySelectorAll(".sliders input");
     const hue = sliders[0];
@@ -80,9 +76,10 @@ function randomColors() {
 
     colorizeSliders(color, hue, brightness, saturation);
   });
-  //reset inputs
+
+  // reset inputs
   resetInputs();
-  //check for button contrast
+  // check for button contrast
   adjustBtn.forEach((button, index) => {
     checkTextContrast(initialColors[index], button);
     checkTextContrast(initialColors[index], lockBtn[index]);
@@ -146,16 +143,15 @@ function hslControls(e) {
   colorizeSliders(color, hue, brightness, saturation);
 }
 function updateTextUI(index) {
-  const activeDiv = colorDivs[index];
-  const color = chroma(activeDiv.style.backgroundColor);
-  const textHex = activeDiv.querySelector("h2");
-  const icons = activeDiv.querySelectorAll(".controls button");
-  textHex.innerText = color.hex(); //convert to hex
-  //check contrast
-  checkTextContrast(color, textHex);
-  for (icon of icons) {
-    checkTextContrast(color, icon);
-  }
+  const color = chroma(colorDivs[index].style.backgroundColor);
+  const textHex = color.hex();
+  const textElements = colorDivs[index].querySelectorAll("h2, h3");
+  const isDarkColor = chroma.contrast(color, "white") < 4.5;
+
+  textElements.forEach((element) => {
+    element.style.color = isDarkColor ? "white" : "black";
+    element.textContent = textHex;
+  });
 }
 function resetInputs() {
   const sliders = document.querySelectorAll(".sliders input");
