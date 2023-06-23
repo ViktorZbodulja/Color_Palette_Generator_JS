@@ -58,9 +58,13 @@ function randomColors() {
   colorDivs.forEach((div, index) => {
     const hexText = div.children[0];
     const randomColor = chroma.random();
-
-    // Store the initial color
-    initialColors.push(randomColor.hex());
+    //Add it to Array
+    if (div.classList.contains("locked")) {
+      initialColors.push(hexText.innerText);
+      return;
+    } else {
+      initialColors.push(chroma(randomColor).hex());
+    }
 
     // Add color to the background
     div.style.backgroundColor = randomColor;
